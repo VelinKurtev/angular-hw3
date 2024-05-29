@@ -1,0 +1,28 @@
+<form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Note Title</mat-label>
+    <input matInput formControlName="noteTitle">
+    <mat-error *ngIf="noteTitle!.hasError('required')">Note Title is required</mat-error>
+    <mat-error *ngIf="noteTitle!.hasError('minlength')">Note Title must be at least 5 characters long</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Note Content</mat-label>
+    <textarea matInput formControlName="noteContent"></textarea>
+    <mat-error *ngIf="noteContent!.hasError('required')">Note Content is required</mat-error>
+    <mat-error *ngIf="noteContent!.hasError('minlength')">Note Content must be at least 7 characters long</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit" [disabled]="noteForm.invalid">Save Note</button>
+</form>
+
+<div class="notes">
+  <div class="note" (click)="selectNote(note)" *ngFor="let note of notes" [class.selected]="notes.indexOf(note) === selectedNoteIndex">
+    <h2>{{ note.noteTitle }}</h2>
+    <p>{{ note.noteContent }}</p>
+  </div>
+  <div *ngIf="selectedNoteIndex !== -1" class="note-operations">
+    <button mat-raised-button (click)="editNote()">Edit Note</button>
+    <button mat-raised-button (click)="deleteNote()">Delete Note</button>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding: 20px;
+    background-color: beige;
+    border-radius: 15px;
+    gap: 15px;
+}
+
+.notes {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 450px;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: beige;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.note {
+    width: 410px;
+    min-height: 150px;
+    background-color: burlywood;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.note:hover{
+    cursor: pointer;
+}
+
+.note-operations {
+    display: flex;
+    gap: 10px
+}
+
+.selected{
+    background-color: rgb(255, 213, 157);
+}
